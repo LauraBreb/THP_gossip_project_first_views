@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get "/", to:"static#index", as: 'root'
+  get "/team", to: "static#team"
+  get "/contact", to: "static#contact"
+  get "/welcome/:first_name", to: "static#welcome"
+  get "/:id", to:"static#show_gossip", as: 'show_gossip'
+  get "/author/:first_name", to:"static#show_author"
+
 end
 

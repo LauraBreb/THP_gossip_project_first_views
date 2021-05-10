@@ -38,7 +38,8 @@ end
 def perform
   10.times do
     user = generate_user
-    user.city = generate_city
+    city = generate_city
+    user.city_id = city.id
     user.save
     2.times do
       gossip = generate_gossip

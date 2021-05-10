@@ -1,0 +1,10 @@
+<h1> Voici le gossip n°<%= @gossip.id%></h1>
+
+<h2><%= @gossip.title %></h2>
+<p><%= @gossip.content %></p><br/><br/>
+
+<%= @gossip.user.first_name %><span>    </span><%= @gossip.user.last_name %>
+<%= link_to "Lien vers l'auteur", "/author/#{@gossip.user.first_name}" %>
+
+
+
