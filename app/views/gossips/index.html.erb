@@ -1,9 +1,11 @@
 <h1>Bienvenue sur la liste des gossips</h1>
 
+<h4><%= link_to "poste un nouveau gossip", new_gossip_path%></h4>
+
 <% @gossips.each do |gossip| %>
   <div class="card" style="width: 40rem; height: 8rem; display:inline-block;">
     <div class="card-body">
-      <h5 class="card-title"><%= link_to "#{gossip.title}", "/#{gossip.id}" %></h5>
+      <h5 class="card-title"><%= link_to "#{gossip.title}", gossip_path(gossip.id) %></h5>
       <p class="card-text"> <%= gossip.content %> </p>
       <i class="card-text"> <%= gossip.user.first_name %> </i>
     </div>

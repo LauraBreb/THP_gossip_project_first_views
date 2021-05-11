@@ -1,9 +1,4 @@
 class StaticController < ApplicationController
-
-  def index
-    @gossips = Gossip.all
-  end
-
   def team
   end
 
@@ -14,7 +9,7 @@ class StaticController < ApplicationController
   end
 
   def show_gossip
-    @gossip = Gossip.find(params[:id])
+    
   end
 
   def show_author

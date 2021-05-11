@@ -27,8 +27,8 @@ end
 def generate_private_message
   20.times do 
     pm = PrivateMessage.new(content: Faker::Quote.yoda)
-    sender = User.find(rand(User.first.id..User.last.id))
-    recipient = User.find(rand(User.first.id..User.last.id))
+    sender = User.all.sample
+    recipient = User.all.sample
     pm.sender = sender
     pm.recipient = recipient
     pm.save
