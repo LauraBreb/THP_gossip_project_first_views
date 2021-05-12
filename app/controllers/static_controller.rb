@@ -8,10 +8,6 @@ class StaticController < ApplicationController
   def welcome
   end
 
-  def show_gossip
-    
-  end
-
   def show_author
     @author = User.find_by(first_name: params[:first_name])
   end
