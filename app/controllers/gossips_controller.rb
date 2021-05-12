@@ -9,6 +9,7 @@ class GossipsController < ApplicationController
   end
   
   def new
+    @alert = false
   end
 
   def create
@@ -18,6 +19,7 @@ class GossipsController < ApplicationController
     if @gossip.save
       render '/gossips/success'
     else
+      @alert = true
       render '/gossips/new'
     end
   end

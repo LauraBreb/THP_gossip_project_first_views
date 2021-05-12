@@ -1,13 +1,23 @@
-<h1>Bienvenue sur la liste des gossips</h1>
-
-<h4><%= link_to "poste un nouveau gossip", new_gossip_path%></h4>
-
-<% @gossips.each do |gossip| %>
-  <div class="card" style="width: 40rem; height: 8rem; display:inline-block;">
-    <div class="card-body">
-      <h5 class="card-title"><%= link_to "#{gossip.title}", gossip_path(gossip.id) %></h5>
-      <p class="card-text"> <%= gossip.content %> </p>
-      <i class="card-text"> <%= gossip.user.first_name %> </i>
-    </div>
+  <!--------- jumbotron ---------------------------------------------------->
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Bienvenue sur la liste des gossips</h1>
+    <p>Retrouvez toute la liste des gossips publiés et n'hésitez pas à en rajouter de votre côté !</p>
+    <p><%= link_to "Publier un nouveau gossip", new_gossip_path, class: "btn btn-primary btn-lg", role: "button"%></p>
   </div>
-<% end%>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% @gossips.each do |gossip| %>
+      <div class="col-md-4">
+        <h2><%=gossip.title%></h2>
+        <p>posté par <%= gossip.user.first_name %></p>
+        <p><%= link_to "Voir le gossip", gossip_path(gossip.id), class: "btn btn-secondary", role: "button"%></p>
+      </div>
+    <% end%>
+  </div>
+
+  <hr>
+
+</div>

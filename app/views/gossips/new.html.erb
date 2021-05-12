@@ -1,14 +1,16 @@
 <h1>Bienvenue sur la page pour créer un potin !</h1> <br> <br>
 
-<% if @gossip.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <p>Nous navons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
-    <ul>
-      <% @gossip.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+<% if @alert == true%>
+  <% if @gossip.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <p>Nous navons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+      <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>
 
 <form action="/gossips" method="post">
