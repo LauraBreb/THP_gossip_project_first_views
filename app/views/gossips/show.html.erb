@@ -1,7 +1,15 @@
 <h1> Voici le gossip n°<%= @gossip.id%></h1>
 
 <h2><%= @gossip.title %></h2>
-<p><%= @gossip.content %></p><br/><br/>
+<p><%= @gossip.content %></p><br>
+<%= link_to "Lien pour éditer le gossip", edit_gossip_path(@gossip.id),class: "btn btn-primary" %><br>
+<%= link_to "supprimer le gossip", gossip_path(@gossip.id), method: :delete, data: { confirm: 'Etes vous sûr ?' } %>
 
-<%= @gossip.user.first_name %><span>    </span><%= @gossip.user.last_name %>
-<%= link_to "Lien vers l'auteur", "/author/#{@gossip.user.first_name}" %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <p> Ecrit par <%= @gossip.user.first_name%><span> </span><%= @gossip.user.last_name%> </p>
+    <p> de <%= link_to "#{@gossip.user.city.name}", city_path(@gossip.user.city.id)%></p>
+    <%= link_to "Lien vers l'auteur", "/author/#{@gossip.user.first_name}",class: "btn btn-primary" %>
+  </div>
+</div>
+

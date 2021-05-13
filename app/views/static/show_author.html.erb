@@ -1,6 +1,5 @@
 <h1><%= @author.first_name%><span> </span><%= @author.last_name%></h1>
-<p><%= @author.description%></p><br/>
-
-<p><%= @author.email%></p>
-
-
+<p>Description : <%= @author.description%></p>
+<p>email : <%= @author.email%></p>
+<p>âge : <%= @author.age%></p>
+<p>ville : <%= link_to "#{@author.city.name}", city_path(@author.city.id)%></p>
