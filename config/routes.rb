@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :gossips
   resources :cities, only: [:show]
   resources :sessions
+  resources :likes, only: [:create, :destroy]
 
   get "/team", to: "static#team"
   get "/contact", to: "static#contact"

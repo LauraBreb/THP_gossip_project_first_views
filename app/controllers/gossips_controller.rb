@@ -29,6 +29,9 @@ class GossipsController < ApplicationController
   end
 
   def update
+    puts "$" * 50
+    puts params
+    puts "$" * 50
     @gossip = Gossip.find(params[:id])
     post_params = params.require(:gossip).permit(:title, :content)
     if @gossip.update(post_params)
