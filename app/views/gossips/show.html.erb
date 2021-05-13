@@ -2,9 +2,10 @@
 
 <h2><%= @gossip.title %></h2>
 <p><%= @gossip.content %></p><br>
-<%= link_to "Lien pour éditer le gossip", edit_gossip_path(@gossip.id),class: "btn btn-primary" %><br>
-<%= link_to "supprimer le gossip", gossip_path(@gossip.id), method: :delete, data: { confirm: 'Etes vous sûr ?' } %>
-
+<% if @gossip.user==current_user %>
+  <%= link_to "Lien pour éditer le gossip", edit_gossip_path(@gossip.id),class: "btn btn-primary" %><br>
+  <%= link_to "supprimer le gossip", gossip_path(@gossip.id), method: :delete, data: { confirm: 'Etes vous sûr ?' } %>
+<% end %>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <p> Ecrit par <%= @gossip.user.first_name%><span> </span><%= @gossip.user.last_name%> </p>

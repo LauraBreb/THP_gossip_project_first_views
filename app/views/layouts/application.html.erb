@@ -16,9 +16,9 @@
   <body>
   <!--------- navbar ---------------------------------------------------->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <%= link_to "The Gossip Project", gossips_path, class: "navbar-brand"%>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <%= link_to "Equipe", team_path, class: "nav-link"%>
           </li><span>   </span>
@@ -26,6 +26,21 @@
             <%= link_to "Contact", contact_path, class: "nav-link"%>
           </li>
         </ul>
+        <form class="form-inline my-2 my-lg-0", style="align">
+          <% if logged_in? %>
+            <%= link_to "Se déconnecter", session_path(session.id), method: :delete, class: "btn btn-outline-success my-2 my-sm-0", type: "submit" %>
+          <% else %>
+            <li class="nav-item dropdown">
+              <a class="btn btn-outline-success my-2 my-sm-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                S'inscrire, se connecter
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "Se connecter", new_session_path, class: "dropdown-item", type: "submit" %>
+                <%= link_to "S'inscrire", new_user_path, class: "dropdown-item", type: "submit" %>
+              </div>
+            </li>
+          <% end %>
+        </form>
       </div>
     </nav>
 

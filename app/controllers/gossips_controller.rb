@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new , :create]
 
   def index
     @gossips = Gossip.all
@@ -13,8 +14,7 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @city = City.create(name: params[:city], zip_code: params[:zip_code])
-    @user = User.create(first_name: params[:first_name], last_name: params[:last_name], description: params[:description], email: params[:email], age: params[:age], city_id: @city.id)
+    @user = current_user
     @gossip = Gossip.create(title: params[:title], content: params[:content], user_id: @user.id)
     if @gossip.save
       render '/gossips/success'
@@ -30,11 +30,9 @@ class GossipsController < ApplicationController
 
   def update
     @gossip = Gossip.find(params[:id])
-    puts "$"*50
-    puts params
-    puts "$"*50
     post_params = params.require(:gossip).permit(:title, :content)
     if @gossip.update(post_params)
+      flash.now[:success]
       redirect_to '/gossips'
     else
       render :edit
@@ -45,5 +43,14 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
     redirect_to '/gossips'
+  end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Vous devez d'abord vous connecter à votre session"
+      redirect_to new_session_path
+    end
   end
 end

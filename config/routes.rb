@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-
+  resources :users
   resources :gossips
-
   resources :cities, only: [:show]
+  resources :sessions
 
   get "/team", to: "static#team"
   get "/contact", to: "static#contact"

@@ -1,6 +1,11 @@
-  <!--------- jumbotron ---------------------------------------------------->
+
 <div class="jumbotron">
   <div class="container">
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-success">
+        <%= msg %>
+      </div>
+    <% end %>
     <h1 class="display-3">Bienvenue sur la liste des gossips</h1>
     <p>Retrouvez toute la liste des gossips publiés et n'hésitez pas à en rajouter de votre côté !</p>
     <p><%= link_to "Publier un nouveau gossip", new_gossip_path, class: "btn btn-primary btn-lg", role: "button"%></p>

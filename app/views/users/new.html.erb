@@ -1,0 +1,44 @@
+<h1>Crée ton profil utilisateur</h1> <br> <br>
+
+<% if @alert == true%>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <p>nous n'avons pas pu te créer ton profil utilisateur pour les raisons suivantes : </p>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end%>
+
+<form action="/users" method="post">
+  <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+  <h3>Commence par créer ton profil utilisateur</h3>
+  <div> ton adresse mail<br>
+  <input type="text" name="email"> 
+  </div> <br>
+    <div> ton mot de passe<br>
+  <input type="text" name="password"> 
+  </div> <br>
+  <div> ton prénom <br>
+  <input type="text" name="first_name"> 
+  </div> <br>
+  <div> ton nom <br>
+  <input type="text" name="last_name"> 
+  </div> <br>
+  <div> une courte description <br>
+  <input type="text" name="description"> 
+  </div> <br>
+  <div> ton âge<br>
+  <input type="text" name="age"> 
+  </div> <br>
+  <div> ta ville<br>
+  <input type="text" name="city"> 
+  </div> <br>
+  <div> ton code postal<br>
+  <input type="text" name="zip_code"> 
+  </div> <br>
+  <input type="submit" value="Créer mon profil">
+</form>
