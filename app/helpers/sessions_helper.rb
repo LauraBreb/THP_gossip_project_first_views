@@ -14,4 +14,11 @@ module SessionsHelper
       return false
     end
   end
+
+  def remember(user)
+    remember_token = SecureRandom.urlsafe_base64
+    user.remember(remember_token)
+    cookies.permanent[:user_id] = user.id
+    cookies.permanent[:remember_token] = remember_token
+  end
 end

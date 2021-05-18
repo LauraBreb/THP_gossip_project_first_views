@@ -4,12 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts '$'*50
-    puts params
-    puts '$'*50
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       log_in(user)
+      remember(user)
       redirect_to '/gossips', notice: "vous êtes maintenant connecté à votre session"
     else
       flash.alert = 'email ou mot de passe invalides'
